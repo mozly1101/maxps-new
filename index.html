@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAX PS — Demo</title>
+
+  <!-- Futuristic font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1:#021426;
+      --bg-2:#07182a;
+      --card:#0b2330;
+      --neon:#00f0e0;
+      --neon-2:#01d6c3;
+      --muted:#99dbe3;
+      --glass: rgba(255,255,255,0.03);
+      --radius-card:28px;
+      --btn-height:56px;
+      --btn-radius:36px;
+      --max-width:920px;
+      font-family: 'Orbitron', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    html,body{height:100%;margin:0;background: radial-gradient(ellipse at top left, rgba(0,36,56,0.9) 0%, rgba(2,18,34,1) 40%, rgba(2,12,22,1) 100%); color:#dff6f2}
+    *{box-sizing:border-box}
+
+    .wrap{max-width:var(--max-width);margin:24px auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#1a74a6,#2bd4c3);box-shadow: 0 6px 24px rgba(2,210,190,0.12), inset 0 -6px 20px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-weight:900;color:#031617}
+    .title{font-size:20px;color:var(--neon);letter-spacing:0.6px}
+    nav{display:flex;gap:20px}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;opacity:0.9}
+    .hero{padding:48px 12px 36px;text-align:center}
+    .hero h1{font-size:46px;margin:0;color:var(--neon);text-shadow:0 6px 28px rgba(0,240,224,0.08)}
+    .hero p{margin:12px 0 0;color:var(--muted);font-size:15px}
+    .community{margin-top:28px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+    /* Smooth & HD Button Styles */
+    .btn, .host-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      height:var(--btn-height);
+      padding:0 28px;
+      border-radius:var(--btn-radius);
+      background:linear-gradient(90deg,var(--neon),var(--neon-2));
+      color:#002525;
+      font-weight:800;
+      font-size:15px;
+      text-decoration:none;
+      box-shadow: 0 0 15px rgba(0,240,224,0.25), 0 8px 28px rgba(0,240,224,0.2);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      border:0;
+    }
+    .btn:hover, .host-btn:hover{
+      transform:translateY(-3px) scale(1.02);
+      box-shadow: 0 0 20px rgba(0,240,224,0.35), 0 10px 36px rgba(0,240,224,0.25);
+    }
+    .btn:active, .host-btn:active{
+      transform:scale(0.96);
+      box-shadow: 0 0 10px rgba(0,240,224,0.3), 0 6px 20px rgba(0,240,224,0.18);
+    }
+
+    .section-title{display:flex;align-items:center;gap:12px;margin:46px 0 18px;color:var(--neon);font-size:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius-card);padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,200,200,0.03);border: 1px solid rgba(0,200,200,0.06);margin-bottom:22px;}
+    .card h3{margin:0;font-size:22px;color:var(--neon);display:flex;align-items:center;gap:12px}
+    .card .lead{color:var(--muted);margin-top:8px;font-size:13px}
+    .actions{margin-top:18px}
+    .outline-btn{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 26px;border-radius:28px;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer;background:transparent;color:var(--neon);border:3px solid rgba(0,240,224,0.18);box-shadow: 0 6px 24px rgba(0,240,224,0.06), 0 0 26px rgba(0,240,224,0.04) inset;}
+    .panel{margin-top:18px;display:none}
+    pre.host-list{background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.18));padding:14px;border-radius:12px;color:#bff8f1;overflow:auto;font-size:14px;border:1px solid rgba(0,240,224,0.04);}
+    .panel-actions{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+    .copy-btn{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer;font-weight:700;}
+    footer{margin-top:42px;text-align:center;color:rgba(0,240,224,0.6);font-size:14px;padding-bottom:28px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">GB</div>
+      <div>
+        <div class="title">MAX PS</div>
+        <div style="font-size:12px;color:var(--muted)">Digital Tools · VPN · Hosting</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#community">Community</a>
+      <a href="#hosting">Hosting</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h1>Welcome to MAX PS</h1>
+      <p>Digital Tools, VPN, Hosting &amp; More</p>
+      <div class="community" id="community">
+        <a class="btn" href="https://chat.whatsapp.com/Gmn79JZpjsI5mo0PcRrjjM?mode=r_c" target="_blank">📱 WHATSAPP</a>
+        <a class="btn" href="https://discord.gg/nmBUTThK" target="_blank">🎧 DISCORD</a>
+        <a class="btn" href="https://t.me/maxprivateserver" target="_blank">📣 TELEGRAM</a>
+      </div>
+    </section>
+
+    <div class="section-title" style="margin-top:36px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="opacity:0.95">
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="rgba(0,240,224,0.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div style="font-size:20px;color:var(--neon)">Hosting Info</div>
+    </div>
+
+    <!-- Host Link -->
+    <section class="card">
+      <h3>⬇️ Host File</h3>
+      <div class="lead">Download hosts untuk Android / Windows</div>
+      <div class="actions">
+        <a class="host-btn" href="https://www.mediafire.com/file/ioyopqw3ve00mku/maxps1.txt/file" target="_blank">📁 DOWNLOAD HOST FILE</a>
+      </div>
+    </section>
+
+    <!-- PowerTunnel -->
+    <section class="card">
+      <h3>🛡️ PowerTunnel Host Link</h3>
+      <div class="lead">Link PowerTunnel untuk konfigurasi</div>
+      <div class="actions">
+        <button class="host-btn" data-toggle="panelPowerTunnel">📁 SHOW HOST LINK</button>
+      </div>
+      <div class="panel" id="panelPowerTunnel">
+        <pre class="host-list" id="textPowerTunnel">
+https://gtpshost.com/maxps1.txt
+        </pre>
+        <div class="panel-actions">
+          <button class="copy-btn" data-target="textPowerTunnel">Copy PowerTunnel Host</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Show/Hide Host Entries -->
+    <section class="card">
+      <h3>🔧 Show/Hide Host Entries</h3>
+      <div class="lead">Windows / macOS</div>
+      <div class="actions">
+        <button class="host-btn" data-toggle="panelHostEntries">📁 WINDOWS/MACOS</button>
+      </div>
+      <div class="panel" id="panelHostEntries">
+        <pre class="host-list" id="textHostEntries">
+103.42.116.171 growtopia1.com
+103.42.116.171 growtopia2.com
+103.42.116.171 www.growtopia1.com
+103.42.116.171 www.growtopia2.com
+        </pre>
+        <div class="panel-actions">
+          <button class="copy-btn" data-target="textHostEntries">Copy Host Entries</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Show/Hide Surge Config -->
+    <section class="card">
+      <h3>📱 Show/Hide Surge Config</h3>
+      <div class="lead">iOS Surge configuration</div>
+      <div class="actions">
+        <button class="host-btn" data-toggle="panelSurgeConfig">📁 IOS SURGE</button>
+      </div>
+      <div class="panel" id="panelSurgeConfig">
+        <pre class="host-list" id="textSurgeConfig">
+[Host]
+103.42.116.171 growtopia1.com
+103.42.116.171 growtopia2.com
+
+[Rule]
+DOMAIN-SUFFIX,growtopia1.com,DIRECT
+DOMAIN-SUFFIX,growtopia2.com,DIRECT
+FINAL,DIRECT
+        </pre>
+        <div class="panel-actions">
+          <button class="copy-btn" data-target="textSurgeConfig">Copy Surge Config</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> MAX PS Dev. All rights reserved.
+    </footer>
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // Toggle panels
+  document.querySelectorAll('[data-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = document.getElementById(btn.dataset.toggle);
+      const visible = panel.style.display === 'block';
+      panel.style.display = visible ? 'none' : 'block';
+      panel.setAttribute('aria-hidden', visible ? 'true' : 'false');
+      if (!visible) {
+        setTimeout(() => panel.scrollIntoView({behavior:'smooth', block:'center'}), 80);
+      }
+    });
+  });
+
+  // Copy to clipboard
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const targetId = btn.dataset.target;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      try {
+        await navigator.clipboard.writeText(target.innerText.trim());
+        const oldText = btn.innerText;
+        btn.innerText = 'Copied ✓';
+        setTimeout(() => btn.innerText = oldText, 1400);
+      } catch(err) {
+        alert('Gagal menyalin: ' + err);
+      }
+    });
+  });
+</script>
+</body>
+</html>
